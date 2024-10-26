@@ -1,7 +1,4 @@
 ```markdown
-# Iris MLflow Project
-
-This project demonstrates how to set up and run an ML pipeline with MLflow tracking using the Iris dataset.
 
 ## Setup
 
@@ -15,6 +12,10 @@ cd iris_mlflow_project
 # Create and activate virtual environment
 python -m venv venv
 source venv/bin/activate  # On Windows use: venv\Scripts\activate
+
+# [Optional] Create a virtual enviornment using conda (install anaconda first)
+conda create --name venv python=3.12
+conda activate venv
 
 # Install required packages
 pip install mlflow scikit-learn pandas numpy schedule
@@ -48,11 +49,11 @@ In a new terminal (keep the MLflow server running), activate the virtual environ
 ```bash
 # Activate virtual environment again (since we're in a new terminal)
 source venv/bin/activate  # On Windows use: venv\Scripts\activate
+or
+conda activate venv  
 
 # Run the pipeline
-python 
-
-iris_pipeline.py
+python iris_pipeline.py  
 
 
 ```
@@ -83,7 +84,7 @@ Ctrl + C
 Ctrl + C
 
 # Deactivate virtual environment
-deactivate
+deactivate or conda deactivate (if using conda)
 ```
 
 ## Directory Structure
@@ -95,14 +96,8 @@ iris_mlflow_project/
 │   ├── iris_model.joblib
 │   └── scaler.joblib
 ├── mlruns/
-├── 
-
-mlflow.db
-
-
-└── 
-
-iris_pipeline.py
+├── mlflow.db
+└── iris_pipeline.py  
 
 
 ```
@@ -126,7 +121,7 @@ lsof -i :5000
 ### 3. To kill MLflow server if it's stuck
 
 ```bash
-# Find the process ID
+# Get the process ID
 ps aux | grep mlflow
 
 # Kill the process
@@ -137,11 +132,7 @@ kill <process_id>
 
 ```bash
 # Remove MLflow database and runs
-rm 
-
-mlflow.db
-
-
+rm mlflow.db 
 rm -rf mlruns
 ```
 
@@ -166,6 +157,18 @@ source venv/bin/activate
 # Deactivate when done
 deactivate
 ```
+Optional:
+```bash
+# Create a conda virtual environment
+conda create --name venv python=3.12
+
+# Activate it
+conda activate venv
+
+# Deactivate when done
+conda deactivate venv
+```
+
 
 ### 2. Save package dependencies
 
